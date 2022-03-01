@@ -1,2 +1,4 @@
-package base;public class BaseClass {
+package base;
+
+public class BaseClass {
 }
