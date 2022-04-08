@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 78.52 s <<< FAILURE! - in TestSuite
+id(testclasses.ClassOne)  Time elapsed: 68.184 s  <<< FAILURE!
+java.lang.NullPointerException
+	at testclasses.ClassOne.id(ClassOne.java:18)
+

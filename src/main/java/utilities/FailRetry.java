@@ -5,16 +5,17 @@ import org.testng.ITestResult;
 
 public class FailRetry implements IRetryAnalyzer {
 
-    int maxRetryCount=3;
-    int retryCount=0;
+    int maxCount=3;
+    int startCount=0;
+
+    @Override
     public boolean retry(ITestResult iTestResult) {
-        if(retryCount < maxRetryCount)
-        {
-            retryCount++;
-            System.out.println("Retrying Test method : "+iTestResult.getName() + " for " + retryCount +" times. ");
-            return true;
+        while (maxCount>startCount) {
+            if (iTestResult.isSuccess()) {
+                return true;
+            }
+            startCount++;
         }
         return false;
     }
-
 }
