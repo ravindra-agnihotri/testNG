@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <listeners>
     <!--    <listener class-name="utilities.AnnotationTransformer"/>-->
-       <listener class-name="utilities.Reporting"/>
+       <listener class-name="framework.core.utils.Reporting"/>
     </listeners>
     <test verbose="2" preserve-order="true" name="E:/projects/testNG">
       <classes>

@@ -1,4 +1,4 @@
-package utilities;
+package framework.core.utils;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
@@ -17,5 +17,10 @@ public class FailRetry implements IRetryAnalyzer {
             startCount++;
         }
         return false;
+    }
+
+    public FailRetry mmm(){
+        System.out.println("dbvhjdfgbfdg");
+        return new FailRetry();
     }
 }

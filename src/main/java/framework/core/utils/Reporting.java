@@ -1,6 +1,7 @@
-package utilities;
+package framework.core.utils;
 
-import base.BaseClass;
+import framework.core.ConstantData;
+import framework.core.base.DriverInvoker;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -14,27 +15,41 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Reporting implements ITestListener {
-   public static WebDriver driver= BaseClass.getDriver();
-    String reportPath="E:\\projects\\testNG\\src\\main\\resources\\xyz.html";
-    ExtentSparkReporter extentSparkReporter= new ExtentSparkReporter(reportPath);
+   public static WebDriver driver= DriverInvoker.getDriverInstance();
+
+   ITestResult iTestResult;
+
+
+
+    ExtentSparkReporter extentSparkReporter;
+
     ExtentReports extentReports;
+
     ExtentTest extentTest;
 
     @Override
     public void onTestStart(ITestResult result) {
+        extentSparkReporter= new ExtentSparkReporter(ConstantData.REPORT_PATH + result.getMethod().getMethodName());
         extentReports= new ExtentReports();
-        extentTest=extentReports.createTest("Madam logo ka test");
+        extentTest=extentReports.createTest("Test Started");
+    }
+
+    public void mm(FailRetry failRetry){
+        failRetry.mmm();
+    }
+
+    public static void main(String[] args) {
+        Reporting reporting= new Reporting();
+        reporting.mm(new FailRetry());
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
         if (result.isSuccess()){
-            extentTest.log(Status.PASS,"your testcase is pass");
+            extentTest.log(Status.PASS,"Test Passed");
         }
 
     }
@@ -42,23 +57,19 @@ public class Reporting implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         TakesScreenshot takesScreenshot= ((TakesScreenshot)driver);
-        System.out.println("aalofdgfdg");
        File file= takesScreenshot.getScreenshotAs(OutputType.FILE);
-       File file1= new File("E:\\projects\\testNG\\src\\main\\resources\\aaa.png");
+       File file1= new File(ConstantData.SCREENSHOT_PATH + result.getMethod().getMethodName() + ".png");
         try {
             FileUtils.copyFile(file,file1);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-        extentTest.log(Status.FAIL,"your testcase is failed");
-
+        extentTest.log(Status.FAIL,"Test Failed");
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        extentTest.log(Status.SKIP,"your testcase is skipped");
+        extentTest.log(Status.SKIP,"Test Skipped");
     }
 
     @Override
