@@ -1,6 +1,5 @@
 package framework.core.utils;
 
-import framework.core.ConstantData;
 import framework.core.base.DriverInvoker;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -32,7 +31,7 @@ public class Reporting implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-        extentSparkReporter= new ExtentSparkReporter(ConstantData.REPORT_PATH + result.getMethod().getMethodName());
+      //  extentSparkReporter= new ExtentSparkReporter(ConstantData.REPORT_PATH + result.getMethod().getMethodName());
         extentReports= new ExtentReports();
         extentTest=extentReports.createTest("Test Started");
     }

@@ -11,5 +11,5 @@
   <component name="ProjectResources">
     <resource url="https://jakarta.apache.org/log4j/" location="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_13" default="true" project-jdk-name="13" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" default="true" project-jdk-name="11.0.5" project-jdk-type="JavaSDK" />
 </project>

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <listeners>
-    <!--    <listener class-name="utilities.AnnotationTransformer"/>-->
-       <listener class-name="framework.core.utils.Reporting"/>
-    </listeners>
-    <test verbose="2" preserve-order="true" name="E:/projects/testNG">
-      <classes>
-          <class name="testclasses.ClassOne"/>
-      </classes>
+    <groups>
+        <run>
+          <include name="smoke"/>
+        </run>
+    </groups>
+    <test verbose="2" preserve-order="true" name="/Users/ravindraagnihotri/Documents/testNG">
+        <classes>
+            <class name="framework.core.testNGFunctns.One">
+                    </class>
+            <class name="framework.core.testNGFunctns.Two"/>
+        </classes>
     </test>
 </suite>
